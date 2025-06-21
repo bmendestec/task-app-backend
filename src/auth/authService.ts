@@ -14,7 +14,7 @@ export async function loginUser(email: string, password: string, request: Fastif
     }
 
     const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET!, {
-        expiresIn: '1h',
+        expiresIn: '7d',
     });
     return reply.send({ token });
 }
