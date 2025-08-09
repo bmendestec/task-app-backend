@@ -18,7 +18,7 @@ export class AuthController {
                 return { message: 'Invalid credentials' };
             }
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
-                expiresIn: '1h',
+                expiresIn: '7d',
             });
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: number };

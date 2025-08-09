@@ -12,7 +12,8 @@ const taskRepository = new TaskRepositoryPostgres();
 const login = new LoginRoutes(userRepository, server);
 
 await server.register(cors, {
-    origin: 'http://localhost:3000',
+    // origin: 'http://localhost:3000',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 });
 
