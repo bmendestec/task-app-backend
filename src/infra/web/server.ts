@@ -11,7 +11,7 @@ const userRepository = new UserRepositoryPostgres();
 const taskRepository = new TaskRepositoryPostgres();
 const login = new LoginRoutes(userRepository, server);
 const corsOptions = {
-    origin: ['https://agent-ai-frontend-dev-bmendestecs-projects.vercel.app/','http://localhost:5173'],
+    origin: ['https://task-app-backend-production-eb33.up.railway.app//','http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
