@@ -27,7 +27,7 @@ server.setErrorHandler((error: FastifyError, request: FastifyRequest, reply: Fas
 });
 
 const host = process.env.HOST || 'localhost';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 // Inicia o servidor
 server.listen({ host, port }, (err, address) => {
