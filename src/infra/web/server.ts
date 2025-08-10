@@ -26,7 +26,8 @@ server.setErrorHandler((error: FastifyError, request: FastifyRequest, reply: Fas
     reply.status(500).send({ error: 'Internal Server Error', message: error.message });
 });
 
-const host = process.env.HOST || 'localhost';
+//const host = process.env.HOST || 'localhost';
+const host = 'agent-ai-server-dev.app';
 const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 // Inicia o servidor
