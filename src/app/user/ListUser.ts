@@ -10,6 +10,7 @@ export class ListUser {
         if (!users) {
             throw new Error('No users found');
         }
+
         return users;
     }
 }
