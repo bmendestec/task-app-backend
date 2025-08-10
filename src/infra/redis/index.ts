@@ -3,10 +3,10 @@ import 'dotenv/config';
 
 const { REDIS_URL } = process.env;
 
-if (!REDIS_URL) {
-    throw new Error("REDIS_URL não está definido nas variáveis de ambiente.");
-}
+const redisUrl = REDIS_URL || 'redis://127.0.0.1:6379';
 
-const redis = new Redis(REDIS_URL + '?family=0');
+const redis = new Redis(redisUrl);
+redis.on('connect', () => console.log('Redis conectado'));
+redis.on('error', (err) => console.error('Redis error', err));
 
 export default redis;
