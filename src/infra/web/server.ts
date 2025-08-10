@@ -10,14 +10,12 @@ const server: FastifyInstance = fastify();
 const userRepository = new UserRepositoryPostgres();
 const taskRepository = new TaskRepositoryPostgres();
 const login = new LoginRoutes(userRepository, server);
+const corsOptions = {
+    origin: ['https://task-app-backend-production-47a1.up.railway.app','http://localhost:5173'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+};
 
-await server.register(cors, {
-    // origin: 'http://localhost:3000',
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-});
-
-
+await server.register(cors, corsOptions);
 
 login.execute();
 await userRoutes(server, { userRepository });
