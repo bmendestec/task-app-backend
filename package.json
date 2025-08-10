@@ -6,10 +6,11 @@
   "scripts": {
     "test": "jest --collectCoverage --forceExit --detectOpenHandles",
     "test:watch": "jest --watch",
-    "start": "rm -rf dist && npx tsc && node dist/src/infra/web/server.js",
     "start-w": "npx tsc && node dist/src/infra/web/server.js",
     "redis": "redis-server",
-    "dev": "tsc --watch"
+    "build": "rm -rf dist && tsc",
+    "start": "node dist/src/infra/web/server.js",
+    "dev": "ts-node-dev src/infra/web/server.ts"
   },
   "keywords": [],
   "author": "",
