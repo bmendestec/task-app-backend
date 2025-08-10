@@ -11,7 +11,7 @@ const userRepository = new UserRepositoryPostgres();
 const taskRepository = new TaskRepositoryPostgres();
 const login = new LoginRoutes(userRepository, server);
 const corsOptions = {
-    origin: ['https://task-app-backend-production-47a1.up.railway.app','http://localhost:5173'],
+    origin: ['https://agent-ai-server-dev.app','http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
@@ -26,8 +26,7 @@ server.setErrorHandler((error: FastifyError, request: FastifyRequest, reply: Fas
     reply.status(500).send({ error: 'Internal Server Error', message: error.message });
 });
 
-//const host = process.env.HOST || 'localhost';
-const host = 'agent-ai-server-dev.app';
+const host = process.env.HOST || 'localhost';
 const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 
 // Inicia o servidor
