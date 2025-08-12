@@ -12,7 +12,7 @@ export class AuthController {
     }
 
     async login(email: string, password: string): Promise<object | undefined> {
-        try {            
+        try {
             const user = await this.userRepository.findByEmail(email);
             if (!user || !(await bcrypt.compare(password, user.password))) {
                 return { message: 'Invalid credentials' };
@@ -54,6 +54,17 @@ export class AuthController {
         } catch (e) {
             console.log(e);
             throw new Error("Failed to logout");
+        }
+    }
+
+    async facebookLogin(accessToken: string): Promise<object | undefined> {
+        try {
+            if (accessToken) {
+                console.log(accessToken);
+                return { message: accessToken };
+            }
+        } catch (e) {
+
         }
     }
 }

@@ -35,13 +35,13 @@ export class LoginRoutes {
         this.server.post('/auth/facebook', async (request: FastifyRequest, reply: FastifyReply) => {
             try {
                 const { token } = request.body as { token: string; };
-                // const token = await loginController.login(email, password);
-                if (!token) {
+                const accessToken = await loginController.facebookLogin(token);
+                if (!accessToken) {
                     throw new Error('Invalid credentials');
                 }
-                console.log(token);
-                reply.headers({ 'Authorization': `Bearer ${token}` });
-                reply.status(200).send(token);
+                console.log(accessToken);
+                reply.headers({ 'Authorization': `Bearer ${accessToken}` });
+                reply.status(200).send(accessToken);
             } catch (error) {
                 const err = error as Error;
                 if (err.message === 'Invalid credential') {
