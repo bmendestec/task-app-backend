@@ -32,6 +32,25 @@ export class LoginRoutes {
             }
         });
 
+        this.server.post('/auth/facebook', async (request: FastifyRequest, reply: FastifyReply) => {
+            try {
+                const { token } = request.body as { token: string; };
+                // const token = await loginController.login(email, password);
+                if (!token) {
+                    throw new Error('Invalid credentials');
+                }
+                console.log(token);
+                reply.headers({ 'Authorization': `Bearer ${token}` });
+                reply.status(200).send(token);
+            } catch (error) {
+                const err = error as Error;
+                if (err.message === 'Invalid credential') {
+                    return reply.status(401).send({ message: "Invalid email or password" });
+                }
+                return reply.status(500).send({ message: "Internal Server Error" });
+            }
+        });
+
         this.server.get('/logout', async (request: FastifyRequest, reply: FastifyReply) => {
             const authHeader = request.headers['authorization'];
             if (!authHeader) {
