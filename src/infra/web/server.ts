@@ -11,7 +11,7 @@ const userRepository = new UserRepositoryPostgres();
 const taskRepository = new TaskRepositoryPostgres();
 const login = new LoginRoutes(userRepository, server);
 const corsOptions = {
-    origin: ['https://redis-production-8b53.up.railway.app/','http://localhost:5173'],
+    origin: ['https://task-app-backend-production-fe04.up.railway.app/','http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
